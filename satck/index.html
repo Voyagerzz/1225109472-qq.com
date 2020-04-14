@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script src="./stack.js"></script>
+<script>
+// 通过栈做二进制转换
+const stack = new Stack()
+function binaryConversion (num, base) {
+  let result = ''
+  while (num > 0) {
+    const rem = Math.floor(num % base)
+    stack.push(rem)
+    num = Math.floor(num / 2)
+  }
+  let len = stack.size()
+  if (len) {
+    while (len) {
+      result += stack.pop()
+      len--
+    }
+  }
+  return result
+}
+
+</script>
+</html>
