@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script src="./queue.js"></script>
+<script>
+// 优先队列
+class ProrityQueue {
+  constructor () {
+    this.items = []
+  }
+  enQueue (value, order) {
+    const element = { value, order }
+    let isPrority = false
+    for (let i = 0; i < this.items.length; i++) {
+      if (value < this.items[i].value) {
+        isPrority = true
+        this.items.splice(i, 0, element)
+        break;
+      }
+    }
+    if (!isPrority) {
+      this.items.push(element)
+    }
+  }
+}
+// 模拟击鼓传花
+function drumFlower (names, num) {
+  const queue = new Queue()
+  queue.enqueue(...names)
+  let outName = ''
+  while (queue.size() > 1) {
+    for (let i = 0; i < num; i++) {
+      queue.enqueue(queue.dequeue())
+    }
+    outName = queue.dequeue()
+    console.log(outName + '被淘汰了')
+  }
+  return queue.dequeue()
+}
+</script>
+</html>
