@@ -8,8 +8,8 @@ class Stack {
     this.items = []
   }
   // 向栈内部添加元素
-  push (item) {
-    return this.items.push(item)
+  push (...args) {
+    return this.items.push(...args)
   }
   // 从栈的顶部移除元素
   pop () {
