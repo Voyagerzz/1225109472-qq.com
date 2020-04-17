@@ -23,4 +23,24 @@ class LinkedList {
     }
     this.length++
   }
+  remoteAt (position) {
+    let current = this.head
+    let index = 0
+    let newHead
+    if (position > -1 && position < this.length) {
+      if (position === 0) {
+          this.head = current.next
+        } else {
+          while (index++ < position) {
+            newHead = current
+            current = current.next
+          }
+          newHead.next = current.next
+        }
+      this.length--
+      return current.element
+    } else {
+      return null
+    }
+  }
 }
