@@ -48,19 +48,14 @@ class LinkedList {
     const linkList = {}
     while (current.next) {
       const nextNode = current.next
-      // 将后置节点的值放到新的前置节点
+      // 新的前置节点
       const preNode = new Node(nextNode.element)
-      // 将后置节点的值改为原始的前置节点的值, 后置节点的next保持不变
-      // 如果后置节点的next不为null，则继续反转
-      if (nextNode.next) {
-        nextNode.element = current.element
-        current = nextNode
-      } else {
-        current.next = null
-      }
-      preNode.next = linkList.head || nextNode
+      // 删除原链表中被前置的节点
+      current.next = nextNode.next
+      preNode.next = linkList.head || current
       linkList.head = preNode
     }
     this.head = linkList.head
+    return this.head
   }
 }
