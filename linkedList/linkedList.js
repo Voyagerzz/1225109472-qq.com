@@ -24,10 +24,10 @@ class LinkedList {
     this.length++
   }
   remoteAt (position) {
-    let current = this.head
-    let index = 0
-    let newHead
-    if (position > -1 && position < this.length) {
+    if (Number.isInteger(position) && position > -1 && position < this.length) {
+      let current = this.head
+      let index = 0
+      let newHead
       if (position === 0) {
           this.head = current.next
         } else {
